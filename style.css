@@ -1,0 +1,131 @@
+* {
+    font-family: sans-serif;
+    color: #1f1f1f;
+}
+header{
+    display: flex;
+        justify-content: flex-start;
+        gap: 24px;
+        align-items: center;
+    background-color: white;
+    padding: 25px 15px;
+    border-bottom: 2px #dadada solid;
+}
+.header-section {
+    gap: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item-section {
+    justify-content: space-between;
+     display: flex;
+      gap:24px;
+        width: 100%;
+}
+.header-item {
+    cursor: pointer;
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 14px;
+}
+.header-item:hover {
+    color: #161616;
+    text-shadow: #1f1f1f;
+}
+.cream {
+    background-color: #F0EEEF;
+}
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    gap:48px;
+    padding: 35px;
+}
+.main-img {
+ object-fit: cover;
+ height: 100%;
+ width: 60%;
+ border-radius: 8px;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+.main-content {
+    padding: 15px;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.content-head {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom:25px ;
+}
+.content-subhead {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom:25px;
+    color: black;
+}
+.content-p {
+color: #4a4a4a;
+font-size: 14px;
+font-weight: 600;
+}
+.content-p span {
+    font-weight: 700;
+}
+
+.content-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 25px;
+}
+.content-action-button {
+    background-color: #1f1f1f;
+    border-radius: 100%;
+    height: 48px;
+    width: 48px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 12px 0px rgba(31, 31, 31, 1);
+    cursor: pointer;
+}
+.content-action-button:hover{
+box-shadow: 3px 6px 12px 0px rgba(31, 31, 31, 1);
+}
+.content-feature {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 42px;
+        margin-bottom: 56px;
+}
+.content-feature-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+.content-feature-item-1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+.content-feature-item-2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a4a4a;
+}

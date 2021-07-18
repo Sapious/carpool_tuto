@@ -18,6 +18,7 @@ mongoose.connection.on("error", (err) => {
 //import routes
 const authRoutes = require("./routes/auth.routes");
 const journeyRoutes = require("./routes/journey.routes");
+const journeyDemandRoutes = require("./routes/journeyDemand.routes");
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", authRoutes);
 app.use("/journeys", journeyRoutes);
+app.use("/journey_demands", journeyDemandRoutes);
 //server listening
 const port = 8000;
 app.listen(port, () => {
