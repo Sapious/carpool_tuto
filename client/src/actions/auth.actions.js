@@ -17,7 +17,7 @@ export const loadUser = () => async (dispatch) => {
     const res = await axios.get("http://localhost:8000/auth/authcheck");
     dispatch({
       type: USER_LOADED,
-      payload: res.data,
+      payload: res.data.user,
     });
   } catch (err) {
     dispatch({
@@ -63,7 +63,6 @@ export const register = (data) => async (dispatch) => {
     );
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data,
     });
   } catch (err) {
     dispatch({

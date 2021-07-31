@@ -1,11 +1,8 @@
-import React from 'react'
-const Footer = props => {
-    return (
-        <div>
-            footer
-        </div>
-    )
-}
+import React from "react";
+import { useRouteMatch } from "react-router-dom";
+const Footer = (props) => {
+  const match = useRouteMatch("/dashboard");
+  return !match && <div> footer</div>;
+};
 
-
-export default Footer
+export default Footer;

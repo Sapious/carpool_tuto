@@ -10,6 +10,7 @@ import { store } from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth.actions";
 import { LOGOUT } from "./constants/actionTypes";
+import Dashboard from "./app/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -19,8 +20,8 @@ function App() {
     store.dispatch(loadUser());
 
     window.addEventListener("storage", () => {
-      if(!localStorage.token) store.dispatch({type: LOGOUT})
-    })
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
   }, []);
   return (
     <Provider store={store}>
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route component={Dashboard} />
         </Switch>
         <Footer />
       </Router>

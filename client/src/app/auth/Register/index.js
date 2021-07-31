@@ -38,19 +38,19 @@ const Register = ({ register, auth }) => {
       <div class="w-full max-w-md">
         <form
           onSubmit={(e) => onSubmitData(e)}
-          class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+          class="bg-secondary-tint shadow-lg rounded px-12 pt-6 pb-8 mb-4">
           <div class="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
             Carpool Login
           </div>
           <div className="flex justify-between items-center w-full gap-4">
             <div class="mb-4 w-1/2">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="firstName">
                 First Name
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="firstName"
                 type="text"
                 required
@@ -61,12 +61,12 @@ const Register = ({ register, auth }) => {
             </div>
             <div class="mb-4 w-1/2">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="lastName">
                 Last Name
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="lastName"
                 type="text"
                 required
@@ -79,12 +79,12 @@ const Register = ({ register, auth }) => {
           <div className="flex justify-between items-center w-full gap-4">
             <div class="mb-4 w-1/2">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="identityNumber">
                 Identity Number
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="identityNumber"
                 type="number"
                 min={0}
@@ -96,12 +96,12 @@ const Register = ({ register, auth }) => {
             </div>
             <div class="mb-4 w-1/2">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="phoneNumber">
                 Phone Number
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="phoneNumber"
                 type="number"
                 min={0}
@@ -115,12 +115,12 @@ const Register = ({ register, auth }) => {
           <div className="flex justify-between items-center w-full gap-4">
             <div class="mb-4 w-1/3">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="city">
                 City
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="city"
                 type="text"
                 required
@@ -131,12 +131,12 @@ const Register = ({ register, auth }) => {
             </div>
             <div class="mb-4 w-1/3">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="street">
                 Street
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="street"
                 type="text"
                 required
@@ -147,12 +147,12 @@ const Register = ({ register, auth }) => {
             </div>
             <div class="mb-4 w-1/3">
               <label
-                class="block text-gray-700 text-sm font-normal mb-2"
+                class="block text-dark text-sm font-normal mb-2"
                 for="zipCode">
                 Zip Code
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
                 name="zipCode"
                 type="number"
                 min={0}
@@ -164,13 +164,11 @@ const Register = ({ register, auth }) => {
             </div>
           </div>
           <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-normal mb-2"
-              for="email">
+            <label class="block text-dark text-sm font-normal mb-2" for="email">
               Email
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
               name="email"
               type="email"
               required
@@ -181,12 +179,12 @@ const Register = ({ register, auth }) => {
           </div>
           <div>
             <label
-              class="block text-gray-700 text-sm font-normal mb-2"
+              class="block text-dark text-sm font-normal mb-2"
               for="password">
               Password
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-dark mb-3 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               placeholder="Password"
               name="password"
@@ -197,12 +195,12 @@ const Register = ({ register, auth }) => {
           </div>
           <div>
             <label
-              class="block text-gray-700 text-sm font-normal mb-2"
+              class="block text-dark text-sm font-normal mb-2"
               for="confirmPassword">
               Confirm Password
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-dark mb-3 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               placeholder="Confirm Password"
               name="confirmPassword"
@@ -212,7 +210,7 @@ const Register = ({ register, auth }) => {
             />
           </div>
           <button
-            class="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700"
+            class="px-4 py-2 rounded text-secondary-tint inline-block shadow-lg bg-primary hover:bg-primary-shade focus:bg-primary-shade"
             type="submit">
             Register
           </button>
