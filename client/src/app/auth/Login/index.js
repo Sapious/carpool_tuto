@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
-const Login = () => {
+import { connect } from "react-redux";
+import { login } from "../../../actions/auth.actions";
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+const Login = ({ login, auth }) => {
+  let history = useHistory();
   const [LoginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -10,18 +14,11 @@ const Login = () => {
   };
   const onSubmitData = async (e) => {
     e.preventDefault();
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const res = await axios.post(
-      "http://localhost:8000/auth/login",
-      LoginData,
-      config
-    );
-    console.log(res);
+    await login(LoginData);
   };
+  if (auth.isAuthenticated) {
+    history.push("/");
+  }
   return (
     <div class="flex items-center justify-center">
       <div class="w-full max-w-md">
@@ -73,5 +70,16 @@ const Login = () => {
     </div>
   );
 };
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.authState,
+});
 
-export default Login;
+const mapDispatchToProps = {
+  login,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

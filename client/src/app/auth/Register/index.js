@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
-const Register = () => {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { register } from "../../../actions/auth.actions";
+import { useHistory } from "react-router-dom";
+const Register = ({ register, auth }) => {
+  let history = useHistory();
   const [RegisterData, setRegisterData] = useState({
     firstName: "",
     lastName: "",
@@ -19,22 +23,16 @@ const Register = () => {
   };
   const onSubmitData = async (e) => {
     e.preventDefault();
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     if (RegisterData.password === RegisterData.confirmPassword) {
-      const res = await axios.post(
-        "http://localhost:8000/auth/register",
-        RegisterData,
-        config
-      );
-      console.log(res);
+      await register(RegisterData);
+      history.push("/login");
     } else {
       console.log("password don't match ");
     }
   };
+  if (auth.isAuthenticated) {
+    history.push("/");
+  }
   return (
     <div class="flex items-center justify-center">
       <div class="w-full max-w-md">
@@ -223,5 +221,17 @@ const Register = () => {
     </div>
   );
 };
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
 
-export default Register;
+const mapStateToProps = (state) => ({
+  auth: state.authState,
+});
+
+const mapDispatchToProps = {
+  register,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
