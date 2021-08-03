@@ -1,8 +1,12 @@
 const Journey = require("../models/journey.models");
 
 const getJourneys = async (req, res) => {
+  const queries = { ...req.query };
   try {
-    const journeys = await Journey.find();
+    const journeys = await Journey.find({
+      ...queries,
+      price: { $gte: queries.minPrice, $lte: queries.maxPrice },
+    });
     return res.status(200).json({ journeys: journeys });
   } catch (err) {
     return res.status(500).json(err);

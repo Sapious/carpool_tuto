@@ -11,7 +11,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth.actions";
 import { LOGOUT } from "./constants/actionTypes";
 import Dashboard from "./app/Dashboard";
-
+import PrivateRoute from "./routing/PrivateRoute";
 function App() {
   useEffect(() => {
     if (localStorage.token) {
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route component={Dashboard} />
+          <PrivateRoute component={Dashboard} />
         </Switch>
         <Footer />
       </Router>

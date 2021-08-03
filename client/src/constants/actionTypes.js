@@ -4,3 +4,7 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
 export const LOGOUT = "LOGOUT";
+
+export const GET_FILTERED_JOURNEYS = "GET_FILTERED_JOURNEYS";
+export const GET_JOURNEY = "GET_JOURNEY";
+export const JOURNEY_ERROR = "JOURNEY_ERROR";

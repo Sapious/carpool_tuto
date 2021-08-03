@@ -23,7 +23,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink
           activeClassName="bg-primary-shade"
-                  to="/dashboard/journey"
+                  to="/dashboard/journeys"
                   exact
           className="flex items-center justify-start gap-2 py-3 px-6 rounded-full hover:bg-primary-shade w-full cursor-pointer">
           <i class="fas fa-home text-secondary-tint text-xl"></i>
