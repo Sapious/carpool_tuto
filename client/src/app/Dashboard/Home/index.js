@@ -3,7 +3,7 @@ import SearchInput from "../../shared/SearchInput";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFilteredJourneys } from "../../../actions/journey.actions";
-const Home = ({ getFilteredJourneys }) => {
+const Home = ({ getFilteredJourneys, journeyState }) => {
   const [SearchQueries, setSearchQueries] = useState({
     destinationFrom: "",
     destinationTo: "",
@@ -23,7 +23,7 @@ const Home = ({ getFilteredJourneys }) => {
   return (
     <Fragment>
       <div className="w-full rounded-2xl shadow-lg border border-secondary p-10 justify-items-stretch">
-        <div className="grid grid-cols-8 gap-4">
+        <form className="grid grid-cols-8 gap-4">
           <div className="col-span-3">
             <SearchInput
               name={"destinationFrom"}
@@ -31,6 +31,7 @@ const Home = ({ getFilteredJourneys }) => {
               title={"from"}
               placeholder={"destination"}
               icon={"fas fa-map-marker-alt"}
+              isRequired={true}
             />
           </div>
           <div className="col-span-3">
@@ -40,6 +41,7 @@ const Home = ({ getFilteredJourneys }) => {
               title={"to"}
               placeholder={"destination"}
               icon={"fas fa-map-marker-alt"}
+              isRequired={true}
             />
           </div>
           <div className="col-span-2">
@@ -60,6 +62,7 @@ const Home = ({ getFilteredJourneys }) => {
               placeholder={Date.now()}
               inputType={"date"}
               icon={"fas fa-calendar-alt"}
+              isRequire={true}
             />
           </div>
           <div className="col-span-2">
@@ -90,44 +93,60 @@ const Home = ({ getFilteredJourneys }) => {
               Search
             </button>
           </div>
-        </div>
+        </form>
       </div>
-      <div className="grid grid-cols-1 gap-4 my-8">
-        <div className="w-full rounded-2xl shadow-lg border border-secondary p-4 flex items-center justify-between gap-6">
-          <div className="text-dark text-2xl font-semibold">Raed bahri</div>
-          <div className="flex justify-center items-center gap-10">
-            <div className="text-dark text-2xl font-semibold">from</div>
-            <div className="relative flex justify-between items-center gap-0.5">
-              {[...new Array(30)].map((el) => {
-                return <span className="rounded-full h-0.5 w-1 bg-dark"></span>;
-              })}
-              <i
-                style={{ left: "calc(50% - 16px)" }}
-                class="fas fa-map absolute text-dark text-3xl"></i>
-            </div>
-            <div className="text-dark text-2xl font-semibold">To</div>
-          </div>
+      {journeyState.journeys &&
+        journeyState.journeys.map((journey) => {
+          return (
+            <div className="grid grid-cols-1 gap-4 my-8">
+              <div className="w-full rounded-2xl shadow-lg border border-secondary p-4 flex items-center justify-between gap-6">
+                <div className="text-dark text-2xl font-semibold capitalize">
+                  {journey.driver.firstName} {journey.driver.lastName}
+                </div>
+                <div className="flex justify-center items-center gap-10">
+                  <div className="text-dark text-2xl font-semibold uppercase">
+                    {journey.destinationFrom}
+                  </div>
+                  <div className="relative flex justify-between items-center gap-0.5">
+                    {[...new Array(30)].map((el) => {
+                      return (
+                        <span className="rounded-full h-0.5 w-1 bg-dark"></span>
+                      );
+                    })}
+                    <i
+                      style={{ left: "calc(50% - 16px)" }}
+                      class="fas fa-map absolute text-dark text-3xl"></i>
+                  </div>
+                  <div className="text-dark text-2xl font-semibold uppercase">
+                    {journey.destinationTo}
+                  </div>
+                </div>
 
-          <button
-            class="px-3 py-2 rounded-full font-bold text-dark inline-block shadow-lg bg-secondary-shade hover:bg-opacity-80 focus:bg-opacity-80"
-            type="button">
-            View Details
-          </button>
-          <div className="text-dark text-2xl font-semibold">price</div>
-          <button
-            class="px-8 py-2 rounded text-xl font-bold text-secondary-tint inline-block bg-primary hover:bg-primary-shade focus:bg-primary-shade"
-            type="button">
-            Book
-          </button>
-        </div>
-      </div>
+                <button
+                  class="px-3 py-2 rounded-full font-bold text-dark inline-block shadow-lg bg-secondary-shade hover:bg-opacity-80 focus:bg-opacity-80"
+                  type="button">
+                  View Details
+                </button>
+                <div className="text-dark text-2xl font-semibold">{journey.price} TND</div>
+                <button
+                  class="px-8 py-2 rounded text-xl font-bold text-secondary-tint inline-block bg-primary hover:bg-primary-shade focus:bg-primary-shade"
+                  type="button">
+                  Book
+                </button>
+              </div>
+            </div>
+          );
+        })}
     </Fragment>
   );
 };
 Home.propTypes = {
   getFilteredJourneys: PropTypes.func.isRequired,
+  journeyState: PropTypes.object.isRequired,
 };
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  journeyState: state.journeyState,
+});
 
 const mapDispatchToProps = {
   getFilteredJourneys,

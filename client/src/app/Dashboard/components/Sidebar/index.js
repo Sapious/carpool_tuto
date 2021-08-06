@@ -16,10 +16,10 @@ const Sidebar = () => {
         <NavLink
           activeClassName="bg-primary-shade"
           exact
-          to="/dashboard/history"
+          to="/dashboard/demands"
           className="flex items-center justify-start gap-2 py-3 px-6 rounded-full hover:bg-primary-shade w-full cursor-pointer">
           <i class="fas fa-home text-secondary-tint text-xl"></i>
-          <div className="text-xl text-secondary-tint">History</div>
+          <div className="text-xl text-secondary-tint">Demands</div>
         </NavLink>
         <NavLink
           activeClassName="bg-primary-shade"

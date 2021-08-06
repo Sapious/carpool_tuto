@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../../actions/auth.actions";
 import { useHistory } from "react-router-dom";
-const Register = ({ register, auth }) => {
+import Spinner from "../../shared/Spinner";
+const Register = ({ register, auth, spinner }) => {
   let history = useHistory();
   const [RegisterData, setRegisterData] = useState({
     firstName: "",
@@ -33,7 +34,9 @@ const Register = ({ register, auth }) => {
   if (auth.isAuthenticated) {
     history.push("/");
   }
-  return (
+  return spinner.loading ? (
+    <Spinner />
+  ) : (
     <div class="flex items-center justify-center">
       <div class="w-full max-w-md">
         <form
@@ -222,10 +225,12 @@ const Register = ({ register, auth }) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  spinner: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.authState,
+  spinner: state.spinnerState,
 });
 
 const mapDispatchToProps = {

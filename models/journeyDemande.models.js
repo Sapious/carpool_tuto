@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const JourneyDemandSchema = new Schema(
   {
     passenger: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     journey: { type: mongoose.Schema.Types.ObjectId, ref: "Journey" },
     state: { type: String, default: "pending" }, //confirmed, pending, canceled
   },

@@ -5,10 +5,15 @@ import {
   USER_LOADING,
   USER_LOADED,
   LOGOUT,
+  SPINNER_LOADING,
+  SPINNER_LOADED,
 } from "../constants/actionTypes";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 export const loadUser = () => async (dispatch) => {
+  dispatch({
+    type: SPINNER_LOADING,
+  });
   dispatch({
     type: USER_LOADING,
   });
@@ -25,8 +30,14 @@ export const loadUser = () => async (dispatch) => {
       payload: err,
     });
   }
+  dispatch({
+    type: SPINNER_LOADED,
+  });
 };
 export const login = (data) => async (dispatch) => {
+  dispatch({
+    type: SPINNER_LOADING,
+  });
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -42,14 +53,21 @@ export const login = (data) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
+    if (res.data.token) setAuthToken(res.data.token);
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,
       payload: err,
     });
   }
+  dispatch({
+    type: SPINNER_LOADED,
+  });
 };
 export const register = (data) => async (dispatch) => {
+  dispatch({
+    type: SPINNER_LOADING,
+  });
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -70,6 +88,9 @@ export const register = (data) => async (dispatch) => {
       payload: err,
     });
   }
+  dispatch({
+    type: SPINNER_LOADED,
+  });
 };
 
 export const logout = () => (dispatch) => {

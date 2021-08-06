@@ -9,12 +9,26 @@ router.post(
   isActive,
   journeyDemandControllers.createJourneyDemand
 );
-router.get("/", journeyDemandControllers.getJourneyDemands);
-router.get("/:journeyDemandId", journeyDemandControllers.getJourneyDemand);
+router.get(
+  "/me",
+  verifyToken,
+  isActive,
+  journeyDemandControllers.getOwnJourneyDemands
+);
+router.get(
+  "/:journeyDemandId",
+  verifyToken,
+  journeyDemandControllers.getJourneyDemand
+);
 router.delete(
   "/:journeyDemandId",
+  verifyToken,
   journeyDemandControllers.deleteJourneyDemand
 );
-router.put("/:journeyDemandId", journeyDemandControllers.updateJourneyDemand);
+router.put(
+  "/:journeyDemandId",
+  verifyToken,
+  journeyDemandControllers.updateJourneyDemand
+);
 
 module.exports = router;

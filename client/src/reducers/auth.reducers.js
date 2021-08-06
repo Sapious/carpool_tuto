@@ -4,7 +4,7 @@ import {
   AUTH_ERROR,
   USER_LOADING,
   USER_LOADED,
-  LOGOUT
+  LOGOUT,
 } from "../constants/actionTypes";
 
 const initialState = {

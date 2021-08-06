@@ -9,6 +9,7 @@ const SearchInput = ({
   icon,
   onChangeHandler,
   name,
+  isRequired = false,
 }) => {
   return (
     <div className="border border-secondary bg-secondary-shade bg-opacity-10 rounded-lg p-4">
@@ -25,6 +26,7 @@ const SearchInput = ({
         min={0}
         className="text-xl text-dark font-bold capitalize appearance-none focus:outline-none bg-transparent w-full"
         placeholder={placeholder}
+        required={isRequired}
       />
       <div className="text-dark font-light">{description}</div>
     </div>
@@ -38,5 +40,6 @@ SearchInput.propTypes = {
   icon: PropTypes.string,
   onChangeHandler: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  isRequired: PropTypes.bool,
 };
 export default SearchInput;
