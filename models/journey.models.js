@@ -7,7 +7,7 @@ const JourneySchema = new Schema(
     destinationFrom: { type: String, lowercase: true },
     destinationTo: { type: String, lowercase: true },
     date: { type: Date },
-    placeNumber: { type: Number },
+    placeNumber: { type: Number, default: 1 },
     description: { type: String },
     price: { type: Number, default: 0 },
     driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

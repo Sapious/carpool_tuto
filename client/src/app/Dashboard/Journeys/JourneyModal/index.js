@@ -75,22 +75,21 @@ const JourneyModal = ({ closeModal, createJourney }) => {
               />
             </div>
           </div>
-            <div class="mb-4">
-              <label
-                class="block text-dark text-sm font-normal mb-2"
-                for="date">
-                Date
-              </label>
-              <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
-                name="date"
-                type="datetime-local"
-                required
-                placeholder="Date"
-                value={JourneyData.date}
-                onChange={(e) => onChangeData(e)}
-              />
-            </div>
+          <div class="mb-4">
+            <label class="block text-dark text-sm font-normal mb-2" for="date">
+              Date
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
+              name="date"
+              type="datetime-local"
+              required
+              placeholder="Date"
+              value={JourneyData.date}
+              onChange={(e) => onChangeData(e)}
+            />
+          </div>
+          <div className="flex w-full gap-4">
             <div class="mb-4">
               <label
                 class="block text-dark text-sm font-normal mb-2"
@@ -107,6 +106,23 @@ const JourneyModal = ({ closeModal, createJourney }) => {
                 onChange={(e) => onChangeData(e)}
               />
             </div>
+            <div class="mb-4">
+              <label
+                class="block text-dark text-sm font-normal mb-2"
+                for="places">
+                places
+              </label>
+              <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
+                name="placeNumber"
+                type="number"
+                required
+                placeholder="places"
+                value={JourneyData.placeNumber}
+                onChange={(e) => onChangeData(e)}
+              />
+            </div>
+          </div>
           <div class="mb-4">
             <label
               class="block text-dark text-sm font-normal mb-2"

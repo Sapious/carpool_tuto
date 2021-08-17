@@ -3,16 +3,17 @@ const Journey = require("../models/journey.models");
 const getJourneys = async (req, res) => {
   const queries = { ...req.query };
   const mongoQuery = {
-    destinationFrom: queries.destinationFrom && queries.destinationFrom,
-    destinationTo: queries.destinationTo && queries.destinationTo,
+    destinationFrom: queries.destinationFrom,
+    destinationTo: queries.destinationTo,
+    date: { $gte: new Date(queries.date) },
     price:
       queries.minPrice || queries.maxPrice
         ? { $gte: !queries.minPrice || 0, $lte: !queries.maxPrice || 9999999 }
         : { $gte: 0 },
     placeNumber: queries.placeNumber
       ? { $gte: queries.placeNumber }
-      : { $gte: 1 },
-    date: { $gte: new Date(queries.date) },
+      : { $gte: 0 },
+    state: "active"
   };
   try {
     const journeys = await Journey.find(mongoQuery).populate({
