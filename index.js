@@ -28,9 +28,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //routes middleware
-app.get("/", (req, res) => {
-  return res.json({ msg: "hello world" });
-});
 app.use("/api/auth", authRoutes);
 app.use("/api/journeys", journeyRoutes);
 app.use("/api/journey_demands", journeyDemandRoutes);
