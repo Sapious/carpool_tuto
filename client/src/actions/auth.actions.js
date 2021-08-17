@@ -19,7 +19,7 @@ export const loadUser = () => async (dispatch) => {
   });
   if (localStorage.token) setAuthToken(localStorage.token);
   try {
-    const res = await axios.get("http://localhost:8000/auth/authcheck");
+    const res = await axios.get("/api/auth/authcheck");
     dispatch({
       type: USER_LOADED,
       payload: res.data.user,
@@ -45,7 +45,7 @@ export const login = (data) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      "http://localhost:8000/auth/login",
+      "/api/auth/login",
       data,
       config
     );
@@ -75,7 +75,7 @@ export const register = (data) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      "http://localhost:8000/auth/register",
+      "/api/auth/register",
       data,
       config
     );

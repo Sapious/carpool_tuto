@@ -20,7 +20,7 @@ export const getFilteredJourneys = (queries) => async (dispatch) => {
   }
   try {
     const res = await axios.get(
-      `http://localhost:8000/journeys?${queryString}`
+      `/api/journeys?${queryString}`
     );
     dispatch({
       type: GET_FILTERED_JOURNEYS,
@@ -48,7 +48,7 @@ export const createJourney = (data) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      "http://localhost:8000/journeys",
+      "/api/journeys",
       data,
       config
     );
@@ -71,7 +71,7 @@ export const getOwnJourneys = () => async (dispatch) => {
     type: SPINNER_LOADING,
   });
   try {
-    const res = await axios.get("http://localhost:8000/journeys/me");
+    const res = await axios.get("/api/journeys/me");
     dispatch({
       type: GET_OWN_JOURNEY,
       payload: res.data.journeys,
@@ -93,7 +93,7 @@ export const cancelJourney = (journeyId) => async (dispatch) => {
   });
   try {
     const res = await axios.get(
-      `http://localhost:8000/journeys/${journeyId}/cancel`
+      `/api/journeys/${journeyId}/cancel`
     );
     dispatch({
       type: CANCEL_JOURNEY,

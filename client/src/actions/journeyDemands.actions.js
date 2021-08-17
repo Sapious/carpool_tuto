@@ -14,7 +14,7 @@ export const getOwnJourneyDemands = () => async (dispatch) => {
     type: SPINNER_LOADING,
   });
   try {
-    const res = await axios.get("http://localhost:8000/journey_demands/me");
+    const res = await axios.get("/api/journey_demands/me");
     dispatch({
       type: GET_OWN_JOURNEY_DEMANDS,
       payload: res.data.journeyDemands,
@@ -40,7 +40,7 @@ export const createJourneyDemand = (data) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      "http://localhost:8000/journey_demands",
+      "/api/journey_demands",
       data,
       config
     );
@@ -65,7 +65,7 @@ export const confirmDemand = (journeyDemandId) => async (dispatch) => {
   });
   try {
     const res = await axios.get(
-      `http://localhost:8000/journey_demands/${journeyDemandId}/confirm`
+      `/api/journey_demands/${journeyDemandId}/confirm`
     );
     dispatch({
       type: CONFIRM_JOURNEY_DEMAND,
@@ -81,7 +81,7 @@ export const cancelDemand = (journeyDemandId) => async (dispatch) => {
     type: SPINNER_LOADING,
   });
   const res = await axios.get(
-    `http://localhost:8000/journey_demands/${journeyDemandId}/cancel`
+    `/api/journey_demands/${journeyDemandId}/cancel`
   );
   dispatch({
     type: CANCEL_JOURNEY_DEMAND,

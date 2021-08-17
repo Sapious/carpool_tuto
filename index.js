@@ -31,9 +31,9 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   return res.json({ msg: "hello world" });
 });
-app.use("/auth", authRoutes);
-app.use("/journeys", journeyRoutes);
-app.use("/journey_demands", journeyDemandRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/journeys", journeyRoutes);
+app.use("/api/journey_demands", journeyDemandRoutes);
 app.use(express.static("./build"));
 app.use("*", (req, res) => {
   res.sendFile(path.resolve("build", "index.html"));
