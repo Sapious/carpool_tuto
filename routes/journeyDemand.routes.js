@@ -30,5 +30,14 @@ router.put(
   verifyToken,
   journeyDemandControllers.updateJourneyDemand
 );
-
+router.get(
+  "/:journeyDemandId/confirm",
+  verifyToken,
+  journeyDemandControllers.confirmJourneyDemand
+);
+router.get(
+  "/:journeyDemandId/cancel",
+  verifyToken,
+  journeyDemandControllers.cancelJourneyDemand
+);
 module.exports = router;

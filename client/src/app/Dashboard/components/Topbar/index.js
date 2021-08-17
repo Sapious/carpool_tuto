@@ -4,7 +4,7 @@ import { logout } from "../../../../actions/auth.actions";
 import PropTypes from "prop-types";
 import { useClickAway } from "react-use";
 
-const Topbar = ({ logout }) => {
+const Topbar = ({ logout, auth }) => {
   const [isDropOpen, setisDropOpen] = useState(false);
   const dropRef = useRef(null);
   useClickAway(dropRef, (e) => {
@@ -17,10 +17,12 @@ const Topbar = ({ logout }) => {
         id="drop-btn-toggle"
         onClick={(e) => setisDropOpen(!isDropOpen)}
         className=" relative flex items-center justify-between gap-2 rounded border border-secondary-shade shadow-sm py-2 px-3">
-        <div className="rounded-full w-6 h-6 bg-primary-tint flex justify-center items-center text-sm font-semibold text-secondary-tint">
-          RB
+        <div className="rounded-full w-6 h-6 bg-primary-tint flex justify-center items-center text-sm font-semibold text-secondary-tint uppercase">
+          {auth.user.firstName[0]}{auth.user.lastName[0]}
         </div>
-        <div className="text-dark">raed bahri</div>
+        <div className="text-dark">
+          {auth.user.firstName} {auth.user.lastName}
+        </div>
         <i className="fas fa-chevron-down text-dark"></i>
       </div>
       {isDropOpen && (
@@ -43,8 +45,11 @@ const Topbar = ({ logout }) => {
 };
 Topbar.propTypes = {
   logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.authState
+});
 
 const mapDispatchToProps = {
   logout,

@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import SearchInput from "../../shared/SearchInput";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFilteredJourneys } from "../../../actions/journey.actions";
-const Home = ({ getFilteredJourneys, journeyState }) => {
+import { createJourneyDemand } from "../../../actions/journeyDemands.actions";
+const Home = ({ getFilteredJourneys, journeyState, createJourneyDemand }) => {
   const [SearchQueries, setSearchQueries] = useState({
     destinationFrom: "",
     destinationTo: "",
@@ -20,6 +21,11 @@ const Home = ({ getFilteredJourneys, journeyState }) => {
   const onChangeHandler = (e) => {
     setSearchQueries({ ...SearchQueries, [e.key]: e.value });
   };
+  useEffect(() => {
+    getFilteredJourneys({
+      date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+    });
+  }, []);
   return (
     <Fragment>
       <div className="w-full rounded-2xl shadow-lg border border-secondary p-10 justify-items-stretch">
@@ -127,8 +133,16 @@ const Home = ({ getFilteredJourneys, journeyState }) => {
                   type="button">
                   View Details
                 </button>
-                <div className="text-dark text-2xl font-semibold">{journey.price} TND</div>
+                <div className="text-dark text-2xl font-semibold">
+                  {journey.price} TND
+                </div>
                 <button
+                  onClick={(e) =>
+                    createJourneyDemand({
+                      journey: journey._id,
+                      driver: journey.driver._id,
+                    })
+                  }
                   class="px-8 py-2 rounded text-xl font-bold text-secondary-tint inline-block bg-primary hover:bg-primary-shade focus:bg-primary-shade"
                   type="button">
                   Book
@@ -143,6 +157,7 @@ const Home = ({ getFilteredJourneys, journeyState }) => {
 Home.propTypes = {
   getFilteredJourneys: PropTypes.func.isRequired,
   journeyState: PropTypes.object.isRequired,
+  createJourneyDemand: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   journeyState: state.journeyState,
@@ -150,6 +165,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getFilteredJourneys,
+  createJourneyDemand,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

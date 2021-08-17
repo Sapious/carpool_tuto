@@ -4,8 +4,12 @@ const getOwnJourneyDemands = async (req, res) => {
   try {
     const journeyDemands = await JourneyDemand.find({
       $and: [
-        { driver: req.verifiedUser._id },
-        { passenger: req.verifiedUser._id },
+        {
+          $or: [
+            { passenger: req.verifiedUser._id },
+            { driver: req.verifiedUser._id },
+          ],
+        },
       ],
     })
       .populate("journey")
@@ -41,8 +45,33 @@ const createJourneyDemand = async (req, res) => {
     return res.status(500).json(err);
   }
 };
-//TODO: confirm journeyDemand
-//TODO: cancel journeyDemand
+
+const confirmJourneyDemand = async (req, res) => {
+  const id = req.params.journeyDemandId;
+  try {
+    const confirmedJourneyDemand = await JourneyDemand.findByIdAndUpdate(
+      id,
+      { state: "confirmed" },
+      { new: true }
+    );
+    return res.status(200).json({ journeyDemand: confirmedJourneyDemand });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+const cancelJourneyDemand = async (req, res) => {
+  const id = req.params.journeyDemandId;
+  try {
+    const canceledJourneyDemand = await JourneyDemand.findByIdAndUpdate(
+      id,
+      { state: "canceled" },
+      { new: true }
+    );
+    return res.status(200).json({ journeyDemand: canceledJourneyDemand });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
 const updateJourneyDemand = async (req, res) => {
   const data = { ...req.body };
   const id = req.params.journeyDemandId;
@@ -74,3 +103,5 @@ module.exports.getJourneyDemand = getJourneyDemand;
 module.exports.createJourneyDemand = createJourneyDemand;
 module.exports.updateJourneyDemand = updateJourneyDemand;
 module.exports.deleteJourneyDemand = deleteJourneyDemand;
+module.exports.confirmJourneyDemand = confirmJourneyDemand;
+module.exports.cancelJourneyDemand = cancelJourneyDemand;

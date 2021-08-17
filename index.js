@@ -1,4 +1,6 @@
+require("dotenv").config()
 //import high level packages
+const path = require("path");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,7 +10,7 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
-mongoose.connect("mongodb://localhost:27017/carpool_tuto");
+mongoose.connect(process.env.MONGO_DB_URI);
 
 mongoose.connection.on("connected", () => {
   console.log("DB connected");
@@ -32,6 +34,10 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/journeys", journeyRoutes);
 app.use("/journey_demands", journeyDemandRoutes);
+app.use(express.static("./build"));
+app.use("*", (req, res) => {
+  res.sendFile(path.resolve("build", "index.html"));
+});
 //server listening
 const port = 8000;
 app.listen(port, () => {

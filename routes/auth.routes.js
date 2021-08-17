@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
     }
     const token = jwt.sign(
       { _id: user._id, isDriver: user.isDriver, isActive: user.isActive },
-      "azerty",
+      process.env.TOKEN_KEY,
       {
         expiresIn: "2 days",
       }

@@ -1,6 +1,9 @@
 import {
   GET_OWN_JOURNEY_DEMANDS,
   JOURNEY_DEMANDS_ERROR,
+  CREATE_JOURNEY_DEMAND,
+  CONFIRM_JOURNEY_DEMAND,
+  CANCEL_JOURNEY_DEMAND,
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -23,6 +26,24 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: payload,
+      };
+    case CREATE_JOURNEY_DEMAND:
+      return {
+        ...state,
+        journeyDemand: payload,
+        loading: false,
+      };
+    case CONFIRM_JOURNEY_DEMAND:
+      return {
+        ...state,
+        journeyDemand: payload,
+        loading: false,
+      };
+    case CANCEL_JOURNEY_DEMAND:
+      return {
+        ...state,
+        journeyDemand: payload,
+        loading: false,
       };
     default:
       return state;
