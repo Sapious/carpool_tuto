@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config();
 //import high level packages
 const path = require("path");
 const express = require("express");
@@ -39,7 +39,7 @@ app.use("*", (req, res) => {
   res.sendFile(path.resolve("build", "index.html"));
 });
 //server listening
-const port = 8000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log("server yemchi jaw mezyan");
 });
